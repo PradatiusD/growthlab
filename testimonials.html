@@ -8,13 +8,8 @@
 <p><br></p>
 <p><br></p>
 <section id="featuredQuote">
-  <blockquote>
-    "GrowthLab is my go-to CFO.<br> I can't recommend them enough."
-  </blockquote>
-  <cite>
-    Hamzah Ansari<br>
-    Accelereach
-  </cite>
+  <blockquote></blockquote>
+  <cite></cite>
 </section>
 <section id="testimonials">
     <article class="one-fourth first">&nbsp;</article>
@@ -46,6 +41,7 @@
     </article>
 </section>
 
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
 <script>
 
   (function testimonials ($){
@@ -56,7 +52,20 @@
     var $featBlockQ = $featQuote.find('blockquote');
     var $featCite   = $featQuote.find('cite');
 
-    var $articles = $testimonials.find('article');
+    // Select only articles that have blockquotes and cites
+    var $articles = $testimonials.find('article').filter(function(index){
+
+      var hasBlockQuote = $(this).find('blockquote').length > 0;
+      var hasCite = $(this).find('cite').length > 0;
+
+      console.log($(this),hasBlockQuote,hasCite);
+
+      if (hasBlockQuote && hasCite) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
     // First create JS object array of quotes
     var quotes = jQuery.map($articles, function(obj){
@@ -79,16 +88,16 @@
 
         if (!$testimonials.is(":hover") && !$featQuote.is(":hover")){
 
-          $featQuote.addClass('animated fade-down-out');
+          $featQuote.addClass('animated fadeOutDown');
 
           setTimeout(function(){
 
-            $featQuote.removeClass('fade-up-in fade-down-out');
+            $featQuote.removeClass('fadeInUp fadeOutDown');
 
             $featBlockQ.html(quotes[j].blockquote);
             $featCite.html(quotes[j].cite);
 
-            $featQuote.addClass('fade-up-in');
+            $featQuote.addClass('fadeInUp');
 
           }, 1000)
 
@@ -97,21 +106,25 @@
           i++;
         }
 
-        }
+    }
 
-        // Change global index and click on text
-        $testimonials.find('a').click(function(){
+    // Change global index and click on text
+    $testimonials.find('a').click(function(){
 
-          var $this = $(this);
-          i = $this.index();
-          $testimonials.find('img').removeClass('hovered');
-          $this.find('img').addClass('hovered');
-          $featBlockQ.html($this.find('blockquote').html());
-          $featCite.html($this.find('cite').html());
+      var $this = $(this);
+      i = $this.index();
+      $testimonials.find('img').removeClass('hovered');
+      $this.find('img').addClass('hovered');
+      $featBlockQ.html($this.find('blockquote').html());
+      $featCite.html($this.find('cite').html());
 
-        });
+    });
 
-        setInterval(cycleQuotes, 6500);
+    // Start it
+    cycleQuotes();
+
+    // Make it change on interval
+    setInterval(cycleQuotes, 6500);
 
     })(jQuery);
 
