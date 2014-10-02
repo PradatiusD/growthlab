@@ -1,111 +1,118 @@
-<h2 class="tight-title">Don't take our word for it.<br />
-There's a reason why our clients love us.</h2>
+<h2 class="tight-title">
+  Don't take our word for it.<br />
+  There's a reason why our clients love us.
+</h2>
+
 <hr />
-<p> <br></p><p><br></p>
+
+<p><br></p>
+<p><br></p>
 <section id="featuredQuote">
-	<blockquote>
-"GrowthLab is my go-to CFO.<br> I can't recommend them enough."
-	</blockquote>
-	<cite>
-		Hamzah Ansari <br>
-		Accelereach<br>
-	</cite>
+  <blockquote>
+    "GrowthLab is my go-to CFO.<br> I can't recommend them enough."
+  </blockquote>
+  <cite>
+    Hamzah Ansari<br>
+    Accelereach
+  </cite>
 </section>
 <section id="testimonials">
-	<article class="one-fourth first">&nbsp;</article>
-<article class="one-fourth" >
-		<a href="Javascript:void(0);">
-			<img src="http://stewartmartin.wpengine.com/wp-content/themes/stewart-martin/images/home-page/logos/Steel-Yard-Logo.png" scale="0">
-			<blockquote style="display:none;">
-"Dan helped us increase profits, get<br>new business fast, and secure funding."</blockquote>
-			<cite style="display:none;">
-Stephanie Issa<br>
-Proprietor / Studio Issa<br>
-			</cite>
-		</a>
-	</article>
-	<article class="one-fourth">
-		<a href="Javascript:void(0);">
-			<img src="http://stewartmartin.wpengine.com/wp-content/themes/stewart-martin/images/home-page/logos/AS220-LOGO.png" scale="0">
-		<blockquote style="display:none;">
-"GrowthLab is my go-to CFO.<br> I can't recommend them enough."
-</blockquote>
-			<cite style="display:none;">
-				Hamzah Ansari <br>
-				Accelereach<br>
-			</cite>
-		</a>
-	</article>
+    <article class="one-fourth first">&nbsp;</article>
+    <article class="one-fourth">
+      <a href="Javascript:void(0);">
+        <img src="http://stewartmartin.wpengine.com/wp-content/themes/stewart-martin/images/home-page/logos/Steel-Yard-Logo.png" scale="0">
+        <blockquote style="display:none;">
+          "Dan helped us increase profits, get<br>
+          new business fast, and secure funding."
+        </blockquote>
+        <cite style="display:none;">
+          Stephanie Issa<br>
+          Proprietor / Studio Issa
+        </cite>
+      </a>
+    </article>
+    <article class="one-fourth">
+      <a href="Javascript:void(0);">
+        <img src="http://stewartmartin.wpengine.com/wp-content/themes/stewart-martin/images/home-page/logos/AS220-LOGO.png" scale="0">
+        <blockquote style="display:none;">
+          "GrowthLab is my go-to CFO.<br>
+          I can't recommend them enough."
+        </blockquote>
+        <cite style="display:none;">
+          Hamzah Ansari <br>
+          Accelereach<br>
+        </cite>
+      </a>
+    </article>
 </section>
+
 <script>
 
-	(function testimonials ($){
+  (function testimonials ($){
 
-		var $featQuote = $('#featuredQuote');
-		var $testimonials = $('#testimonials');
+    var $featQuote = $('#featuredQuote');
+    var $testimonials = $('#testimonials');
 
-		var $featBlockQ = $featQuote.find('blockquote');
-		var $featCite   = $featQuote.find('cite');
+    var $featBlockQ = $featQuote.find('blockquote');
+    var $featCite   = $featQuote.find('cite');
 
-		var $articles = $testimonials.find('article');
+    var $articles = $testimonials.find('article');
 
-		// First create JS object array of quotes
-		var quotes = jQuery.map($articles, function(obj){
+    // First create JS object array of quotes
+    var quotes = jQuery.map($articles, function(obj){
 
-			var $obj = $(obj);
+      var $obj = $(obj);
 
-			return {
-				blockquote: $obj.find('blockquote').html(),
-				cite: $obj.find('cite').html()
-			};
-		});
+      return {
+          blockquote: $obj.find('blockquote').html(),
+          cite: $obj.find('cite').html()
+      };
+    });
 
-		var i = 0;
+    var i = 0;
 
-		// Cycle quotes and change text if testimonials are not being hovered
-		function cycleQuotes(){
+    // Cycle quotes and change text if testimonials are not being hovered
 
-			var j = i % quotes.length;
+    function cycleQuotes(){
 
-			if (!$testimonials.is(":hover") && !$featQuote.is(":hover")){
+      var j = i % quotes.length;
 
-				$featQuote.addClass('animated fade-down-out');
+        if (!$testimonials.is(":hover") && !$featQuote.is(":hover")){
 
-				setTimeout(function(){
+          $featQuote.addClass('animated fade-down-out');
 
-					$featQuote.removeClass('fade-up-in fade-down-out');
+          setTimeout(function(){
 
-					$featBlockQ.html(quotes[j].blockquote);
-					$featCite.html(quotes[j].cite);
+            $featQuote.removeClass('fade-up-in fade-down-out');
 
-					$featQuote.addClass('fade-up-in');
+            $featBlockQ.html(quotes[j].blockquote);
+            $featCite.html(quotes[j].cite);
 
-				}, 1000)
+            $featQuote.addClass('fade-up-in');
 
-				
-				$articles.find('img').removeClass('hovered');
-				$articles.eq(j).find('img').addClass('hovered');
-				i++;
-			}
+          }, 1000)
 
-		}
+          $articles.find('img').removeClass('hovered');
+          $articles.eq(j).find('img').addClass('hovered');
+          i++;
+        }
 
-		// Change global index and click on text
-		$testimonials.find('a').click(function(){
+        }
 
-			var $this = $(this);
-			i = $this.index();
-			$testimonials.find('img').removeClass('hovered');
-			$this.find('img').addClass('hovered');
-			$featBlockQ.html($this.find('blockquote').html());
-			$featCite.html($this.find('cite').html());
+        // Change global index and click on text
+        $testimonials.find('a').click(function(){
 
-		});
+          var $this = $(this);
+          i = $this.index();
+          $testimonials.find('img').removeClass('hovered');
+          $this.find('img').addClass('hovered');
+          $featBlockQ.html($this.find('blockquote').html());
+          $featCite.html($this.find('cite').html());
 
-		setInterval(cycleQuotes, 6500);
+        });
 
-	})(jQuery);
+        setInterval(cycleQuotes, 6500);
 
-
+    })(jQuery);
 
 </script>
