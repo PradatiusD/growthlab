@@ -5,28 +5,49 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body ng-app="growthLab">
-  <div card-flip front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></div>
+  <p class="lead">Flip Demo</p>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>
+  <section card-flip height="300" width="250" front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></section>
+  <section card-flip height="300" width="250" front="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg" back="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg"></section>    
 </body>
 <script>
   angular.module('growthLab', [])
+
   .directive('cardFlip', function(){
+
+    var flip = function () {
+        $(this).toggleClass('flipped');
+    };
+
     return {
       template: function(scope, attrs){
 
-        return  '<article class="flipHolder">'+
-                  '<div class="card">'+    
-                    '<figure class="front" style=background:url('+attrs.front+')></figure>'+
-                    '<figure class="back"  style=background:url('+attrs.back+') ></figure>'+
+       var widthHeightStyle ='style="height:'+attrs.height+'px;width:'+attrs.width+'px;"';
+      
+        return  '<article class="flipHolder"'+widthHeightStyle+'>'+
+                  '<div class="card"'+widthHeightStyle+'>'+    
+                    '<figure class="front" style=background-image:url('+attrs.front+')></figure>'+
+                    '<figure class="back"  style=background-image:url('+attrs.back+') ></figure>'+
                   '</div>'+
                 '</article>';
       },
       link: function(scope, element, attrs){
 
-        $elem = jQuery(element).find('.card');
-
-        $elem.click(function(){
-          $elem.toggleClass('flipped');
-        })
+        var $elem = jQuery(element).find('.card');
+        $elem.click(flip);
       }
     }
   })
