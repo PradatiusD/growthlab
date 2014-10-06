@@ -1,0 +1,24 @@
+{
+  "name": "growthlab",
+  "version": "1.0.0",
+  "description": "GrowthLab Card Flipping",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PradatiusD/growthlab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PradatiusD/growthlab/issues"
+  },
+  "homepage": "https://github.com/PradatiusD/growthlab",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-php": "^1.0.1"
+  }
+}
