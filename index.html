@@ -1,3 +1,35 @@
-testing 5
+<head>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="growthLab">
+  <div card-flip front="http://i.ytimg.com/vi/mSFTRoBY99s/hqdefault.jpg" back="http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg"></div>
+</body>
+<script>
+  angular.module('growthLab', [])
+  .directive('cardFlip', function(){
+    return {
+      template: function(scope, attrs){
 
+        return  '<article class="flipHolder">'+
+                  '<div class="card">'+    
+                    '<figure class="front" style=background:url('+attrs.front+')></figure>'+
+                    '<figure class="back"  style=background:url('+attrs.back+') ></figure>'+
+                  '</div>'+
+                '</article>';
+      },
+      link: function(scope, element, attrs){
+
+        $elem = jQuery(element).find('.card');
+
+        $elem.click(function(){
+          $elem.toggleClass('flipped');
+        })
+      }
+    }
+  })
+
+</script>
 <script src="//localhost:35729/livereload.js"></script>
