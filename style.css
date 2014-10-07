@@ -3,8 +3,62 @@ body {
   background: #00bba8;
 }
 
-section {
+/* Layout */
+.flippy-container {
+  position: relative;
+}
+
+.flippy-container section {
+  position: absolute;
   display: inline-block;
+}
+
+.flippy-container section, .welcome-text {
+  border: 2px solid #FFF;
+}
+
+.welcome-text {
+  background: #FFCB2F;
+  width: 44.8%;
+  height: 58.5%;
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 1em;
+}
+
+.welcome-text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.5em;
+  font-size: 2.1em;
+}
+
+.chevron-up-right {
+  right: 0;
+  top: 0;
+}
+
+.document {
+  right: 0;
+  bottom: 0;
+}
+
+.binoculars {
+  top: 18%;
+  right: 27.25%;
+}
+
+.chart-left-empty {
+  left: 0;
+  top: 0;
+}
+
+.chart-icon {
+  top: 0;
+  left: 20%;
 }
 
 /* Actual code*/
@@ -56,6 +110,8 @@ section {
 .flipHolder {
   position: relative;
   background: #ffca30;
+  width: 100%;
+  height: 100%;
 -webkit-perspective: 800px;
    -moz-perspective: 800px;
      -o-perspective: 800px;
