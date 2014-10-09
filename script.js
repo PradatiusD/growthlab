@@ -30,11 +30,29 @@ angular.module('growthLab', [])
 
   $scope.flip = function (elem) {
 
+    function doIt () {
+      $(elem.target).parent().toggleClass($scope.flipStyle);
+    }
+
     resetStuffIfLayoutChange();
 
-    $(elem.target).parent().toggleClass($scope.flipStyle);
+    if (elem.type == 'click' && $scope.eventStyle == 'click') {
+      doIt();
+    } else if ( (elem.type == 'mouseenter' || elem.type == 'mouseleave') && $scope.eventStyle == 'hover') {
+      doIt();
+    }
 
     lastStyle = $scope.flipStyle;
+  };
+
+  $scope.eventStyle = 'click';
+
+  $scope.changeEvent = function (){
+    if ($scope.eventStyle == 'click') {
+      $scope.eventStyle = 'hover';
+    } else {
+      $scope.eventStyle ='click';
+    }
   };
 
   $scope.cards = [

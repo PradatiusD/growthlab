@@ -8,11 +8,12 @@
 <body ng-app="growthLab">
   <div ng-controller="FlippyController" ng-init="setFlip('slide-flipped')">
     <div class="container text-center">
-      <h1 style="color:white;">Flip Demo <p class="lead">{{flipStyle}} <small style="color:white;">({{speed}} milliseconds)</small></p></h1>
+      <h1 style="color:white;">Flip Demo <p class="lead">{{flipStyle}} <small style="color:white;">({{speed}} millisecond transition on <strong>{{eventStyle}}</strong>)</small></p></h1>
         <aside class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="setFlip('flipped')">Flip</button>
+          <button type="button" class="btn btn-default" ng-click="setFlip('flipped')">Standard Flip</button>
           <button type="button" class="btn btn-default" ng-click="setFlip('slide-flipped')">Slide Flip</button>
-          <button type="button" class="btn btn-default" ng-click="changeCards()">Change Card Style</button>
+          <button type="button" class="btn btn-default" ng-click="changeCards()">Change Image Style</button>
+          <button type="button" class="btn btn-default" ng-click="changeEvent()">Change to Hover or Click</button>
         </aside>
         <span style="color:white;">Speed:</span> <input class="form-control" ng-model="speed" style="max-width: 100px;display: inline-block;">
         <br>
@@ -24,7 +25,7 @@
     </div>
     <div class="flippy-container">
       <div ng-repeat="card in cards" class="{{flipStyle}}">
-        <section card-flip width="{{card.width}}" height="{{card.height}}" front="{{card.front}}" back="{{card.back}}" class="{{card.class}}" ng-click="flip($event)"></section>
+        <section card-flip width="{{card.width}}" height="{{card.height}}" front="{{card.front}}" back="{{card.back}}" class="{{card.class}}" ng-click="flip($event)" ng-mouseenter="flip($event)" ng-mouseleave="flip($event)"></section>
       </div>
     </div>    
   </div>
