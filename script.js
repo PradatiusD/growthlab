@@ -1,7 +1,42 @@
 angular.module('growthLab', [])
 
-.controller('FlippyController', ['$scope', function($scope){
-  
+.factory('flipService', function() {
+  return {};
+})
+
+.controller('FlippyController', ['$scope', 'flipService', function($scope, flipService){
+
+  var lastStyle;
+
+  function resetStuffIfLayoutChange () {
+
+    if (lastStyle && lastStyle !== $scope.flipStyle) {
+      $('.card, section').removeClass('flipped slide-flipped animate');
+      setTimeout(function () {
+        $('.card').addClass('animate');
+      }, 100);
+    }
+  }
+
+  $scope.setFlip = function(arg) {
+
+    $scope.flipStyle = arg;
+
+    resetStuffIfLayoutChange();
+
+    lastStyle = $scope.flipStyle;
+
+  };
+
+  $scope.flip = function (elem) {
+
+    resetStuffIfLayoutChange();
+
+    $(elem.target).parent().toggleClass($scope.flipStyle);
+
+    lastStyle = $scope.flipStyle;
+  };
+
   $scope.cards = [
     {
       "width": 303,
@@ -68,19 +103,48 @@ angular.module('growthLab', [])
     }
   ];
 
+  var cardStyleChanged = false;
+
+  $scope.changeCards = function () {
+    
+    if (!cardStyleChanged) {
+
+      $scope.cards = $scope.cards.map(function(card) {
+
+        if (card.class === "small-square-bottom" || card.class === "small-square-top" || card.class === "chart-left-empty") {
+          card.front = "img/teal-bg.png";
+        } else if (card.class !== "welcome-text") {
+          card.front = card.front.replace('.png','-flat.png');
+        }
+        
+        return card;
+      });
+
+      cardStyleChanged = true;
+
+    } else {
+
+      $scope.cards = $scope.cards.map(function(card) {
+        card.front = card.front.replace('-flat.png', '.png');
+        if (card.front == "img/teal-bg.png") {
+          card.front = "img/"+ card.class + ".png";
+        }
+        return card;
+      });
+
+      cardStyleChanged = false;
+    }
+  };
+
 }])
 
-.directive('cardFlip', function(){
-
-  var flip = function () {
-      $(this).toggleClass('flipped');
-  };
+.directive('cardFlip', ['flipService', function(flipService){
 
   return {
     template: function(scope, attrs){
     
       return  '<article class="flipHolder">'+
-                '<div class="card">'+
+                '<div class="card" ng-style="{transitionDuration:speed}">'+
                   '<figure class="front" style=background-image:url('+attrs.front+')></figure>'+
                   '<figure class="back"  style=background-image:url('+attrs.back+') ></figure>'+
                 '</div>'+
@@ -88,17 +152,14 @@ angular.module('growthLab', [])
     },
     link: function(scope, element, attrs){
 
-
       var totalWidth = 303+361+427+367;
       var totalHeight = 388*2;
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
-
-      var $elem = jQuery(element).find('.card');
-      $elem.click(flip);
       jQuery(element).attr('style',widthHeightStyle);
+      jQuery(element).find('.card').addClass('animate');
     }
   };
-});
+}]);
 
 function setFlippyCanvas() {
   var $flippyCanvas = jQuery(".flippy-container");
