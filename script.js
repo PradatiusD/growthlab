@@ -1,86 +1,30 @@
 angular.module('growthLab', [])
 
-.factory('flipService', function() {
+.factory('slideService', function() {
   return {};
 })
 
-.controller('FlippyController', ['$scope', 'flipService', function($scope, flipService){
-
-  var lastStyle;
-
-  function resetStuffIfLayoutChange () {
-
-    if (lastStyle && lastStyle !== $scope.flipStyle) {
-      $('.card, section').removeClass('flipped slide-flipped animate');
-      setTimeout(function () {
-        $('.card').addClass('animate');
-      }, 100);
-    }
-  }
-
-  $scope.setFlip = function(arg) {
-
-    $scope.flipStyle = arg;
-
-    resetStuffIfLayoutChange();
-
-    lastStyle = $scope.flipStyle;
-
-  };
-
-  $scope.flip = function (elem) {
-
-    function doIt () {
-      $(elem.target).parent().toggleClass($scope.flipStyle);
-    }
-
-    resetStuffIfLayoutChange();
-
-    if (elem.type == 'click' && $scope.eventStyle == 'click') {
-      doIt();
-    } else if ( (elem.type == 'mouseenter' || elem.type == 'mouseleave') && $scope.eventStyle == 'hover') {
-      doIt();
-    }
-
-    lastStyle = $scope.flipStyle;
-  };
-
-  $scope.eventStyle = 'click';
-
-  $scope.changeEvent = function (){
-    if ($scope.eventStyle == 'click') {
-      $scope.eventStyle = 'hover';
-    } else {
-      $scope.eventStyle ='click';
-    }
-  };
+.controller('SlideController', ['$scope', 'slideService', function($scope, slideService){
 
   $scope.cards = [
     {
       "width": 303,
       "height": 324,
-      "front": "img/chart-left-empty.png",
-      "back": "img/cat-happy.jpg",
-      "class": "chart-left-empty"
-    },
-    {
-      "width": 303,
-      "height": 324,
-      "front": "img/chart-left-empty.png",
+      "front": "img/teal-bg.png",
       "back": "img/cat-happy.jpg",
       "class": "chart-left-empty"
     },
     {
       "width": 361,
       "height": 324,
-      "front": "img/chart-icon.png",
+      "front": "img/chart-icon-flat.png",
       "back": "img/cat-happy.jpg",
       "class": "chart-icon"
     },
     {
       "width": 400,
       "height": 367,
-      "front": "img/chevron-up-right-icon.png",
+      "front": "img/chevron-up-right-icon-flat.png",
       "back": "img/cat-happy.jpg",
       "class": "chevron-up-right"
     },
@@ -94,77 +38,45 @@ angular.module('growthLab', [])
     {
       "width": 155,
       "height": 146,
-      "front": "img/small-square-top.png",
+      "front": "img/teal-bg.png",
       "back": "img/cat-happy.jpg",
       "class": "small-square-top"
     },
     {
       "width": 155,
       "height": 107,
-      "front": "img/small-square-bottom.png",
+      "front": "img/teal-bg.png",
       "back": "img/cat-happy.jpg",
       "class": "small-square-bottom"
     },
     {
       "width": 410,
       "height": 388,
-      "front": "img/binoculars-icon.png",
+      "front": "img/binoculars-icon-flat.png",
       "back": "img/cat-happy.jpg",
       "class": "binoculars"
     },
     {
       "width": 400,
       "height": 301,
-      "front": "img/document-icon.png",
+      "front": "img/document-icon-flat.png",
       "back": "img/cat-happy.jpg",
       "class": "document"
     }
   ];
 
-  var cardStyleChanged = false;
-
-  $scope.changeCards = function () {
-    
-    if (!cardStyleChanged) {
-
-      $scope.cards = $scope.cards.map(function(card) {
-
-        if (card.class === "small-square-bottom" || card.class === "small-square-top" || card.class === "chart-left-empty") {
-          card.front = "img/teal-bg.png";
-        } else if (card.class !== "welcome-text") {
-          card.front = card.front.replace('.png','-flat.png');
-        }
-        
-        return card;
-      });
-
-      cardStyleChanged = true;
-
-    } else {
-
-      $scope.cards = $scope.cards.map(function(card) {
-        card.front = card.front.replace('-flat.png', '.png');
-        if (card.front == "img/teal-bg.png") {
-          card.front = "img/"+ card.class + ".png";
-        }
-        return card;
-      });
-
-      cardStyleChanged = false;
-    }
-  };
-
 }])
 
-.directive('cardFlip', ['flipService', function(flipService){
+.directive('cardSlide', ['slideService', function(slideService){
 
   return {
     template: function(scope, attrs){
     
       return  '<article class="flipHolder">'+
                 '<div class="card" ng-style="{transitionDuration:speed}">'+
-                  '<figure class="front" style=background-image:url('+attrs.front+')></figure>'+
-                  '<figure class="back"  style=background-image:url('+attrs.back+') ></figure>'+
+                  '<figure class="front slice-right" style="background-image:url('+attrs.front+')"></figure>'+
+                  '<figure class="front slice-left" style="background-image:url('+attrs.front+')"></figure>'+
+                  '<figure class="back"  style="background-image:url('+attrs.back+')" ></figure>'+
                 '</div>'+
               '</article>';
     },
@@ -173,14 +85,36 @@ angular.module('growthLab', [])
       var totalWidth = 303+361+427+367;
       var totalHeight = 388*2;
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
-      jQuery(element).attr('style',widthHeightStyle);
-      jQuery(element).find('.card').addClass('animate');
+
+      jQuery(element)
+        .hover(
+        function(){
+          var $this = jQuery(this);
+          $this.find('.slice-right').transition({
+            'translate': '100%, 100%'
+          }, 600, 'ease-out');
+          $this.find('.slice-left').transition({
+            'translate': '-100%, -100%'
+          }, 500, 'ease-out');
+
+        },function(){
+          var $this = jQuery(this);
+
+          $this.find('.slice-right').transition({
+            'translate': '0, 0'
+          }, 600, 'ease-out');
+          $this.find('.slice-left').transition({
+            'translate': '-0, -0'
+          }, 500, 'ease-out');
+        })
+        .attr('style',widthHeightStyle)
+        .find('.card').addClass('animate');
     }
   };
 }]);
 
 function setFlippyCanvas() {
-  var $flippyCanvas = jQuery(".flippy-container");
+  var $flippyCanvas = jQuery(".slide-container");
   $flippyCanvas.height($flippyCanvas.width()*(645/1200));
 }
 
