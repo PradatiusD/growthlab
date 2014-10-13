@@ -1,0 +1,93 @@
+@import "bower_components/bourbon/dist/bourbon"
+
+/* Presentation */
+body
+  background: #00bba8
+
+/* Layout */
+.slide-container
+  position: relative
+  
+  section
+    position: absolute
+    display: inline-block
+    border: 2px solid #FFF
+    overflow: hidden
+
+.welcome-text
+  left: 0
+  bottom: 0
+
+.small-square-top
+  left: 44.6%
+  bottom: 13.4%
+
+.small-square-bottom
+  left: 44.6%
+  bottom: 0
+
+.chevron-up-right
+  right: 0
+  top: 0
+
+.document
+  right: 0
+  bottom: 0
+
+.binoculars
+  top: 18%
+  right: 27.25%
+
+.chart-left-empty
+  left: 0
+  top: 0
+
+.chart-icon
+  top: 0
+  left: 20%
+
+/* Actual code*/
+.card
+  width: 100%
+  height: 100%
+  position: absolute
+  +transform-style(preserve-3d)
+
+  figure
+    display: block
+    position: absolute
+    height: 100%
+    width: 100%
+    +backface-visibility(visible)
+
+  .front, .back
+    background-repeat: no-repeat
+    background-position: center center
+
+  .front
+    z-index: 100
+    background-size: cover
+
+  .back
+    background-size: 100% 100%
+    +transition(all 0.3s ease-out)
+    &.hovered
+      background-size: 110% 110%
+
+.slice-right
+  $weirdPolygon: 0 101%, 0 95%, 100% 0, 100% 100%
+  /* polygon to avoid weird slice lines */
+  -webkit-clip-path: polygon($weirdPolygon)
+  clip-path: polygon($weirdPolygon)
+
+.slice-left
+  /* Triangle */
+  $weirdPolygon: 101% 0, 101% 0, 0 100%, 0% 0%
+  -webkit-clip-path: polygon($weirdPolygon)
+  clip-path: polygon($weirdPolygon)
+
+.flipHolder
+  position: relative
+  background: #ffca30
+  width: 100%
+  height: 100%

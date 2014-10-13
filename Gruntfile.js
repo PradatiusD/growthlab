@@ -8,6 +8,10 @@ module.exports = function(grunt) {
         options: {
           livereload: 35729
         }
+      },
+      sass: {
+        files: ['style.sass'],
+        tasks: ['sass']
       }
     },
     php: {
@@ -15,6 +19,13 @@ module.exports = function(grunt) {
         options: {
           keepalive: true,
           open: true
+        }
+      }
+    },
+    sass: {
+      dist: {
+        files: {
+          'style.css': 'style.sass'
         }
       }
     }
@@ -25,5 +36,6 @@ module.exports = function(grunt) {
 
   // Load up tasks
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-php');
 };

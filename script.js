@@ -11,21 +11,21 @@ angular.module('growthLab', [])
       "width": 303,
       "height": 324,
       "front": "img/teal-bg.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/303/324",
       "class": "chart-left-empty"
     },
     {
       "width": 361,
       "height": 324,
       "front": "img/chart-icon-flat.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/361/324",
       "class": "chart-icon"
     },
     {
       "width": 400,
       "height": 367,
       "front": "img/chevron-up-right-icon-flat.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/400/367",
       "class": "chevron-up-right"
     },
     {
@@ -39,21 +39,21 @@ angular.module('growthLab', [])
       "width": 155,
       "height": 146,
       "front": "img/teal-bg.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/155/146",
       "class": "small-square-top"
     },
     {
       "width": 155,
       "height": 107,
       "front": "img/teal-bg.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/155/107",
       "class": "small-square-bottom"
     },
     {
       "width": 410,
       "height": 388,
       "front": "img/binoculars-icon-flat.png",
-      "back": "img/cat-happy.jpg",
+      "back": "http://placekitten.com/410/388",
       "class": "binoculars"
     },
     {
@@ -71,7 +71,7 @@ angular.module('growthLab', [])
 
   return {
     template: function(scope, attrs){
-    
+  
       return  '<article class="flipHolder">'+
                 '<div class="card" ng-style="{transitionDuration:speed}">'+
                   '<figure class="front slice-right" style="background-image:url('+attrs.front+')"></figure>'+
@@ -88,25 +88,29 @@ angular.module('growthLab', [])
 
       jQuery(element)
         .hover(
-        function(){
-          var $this = jQuery(this);
-          $this.find('.slice-right').transition({
-            'translate': '100%, 100%'
-          }, 600, 'ease-out');
-          $this.find('.slice-left').transition({
-            'translate': '-100%, -100%'
-          }, 500, 'ease-out');
+          function(){
+            var $this = jQuery(this);
+            $this.find('.slice-right').transition({
+              'translate': '100%, 100%'
+            }, 600, 'ease-out');
+            $this.find('.slice-left').transition({
+              'translate': '-100%, -100%'
+            }, 500, 'ease-out');
 
-        },function(){
-          var $this = jQuery(this);
+            $this.find('.back').toggleClass('hovered');
 
-          $this.find('.slice-right').transition({
-            'translate': '0, 0'
-          }, 600, 'ease-out');
-          $this.find('.slice-left').transition({
-            'translate': '-0, -0'
-          }, 500, 'ease-out');
-        })
+          },function(){
+            var $this = jQuery(this);
+
+            $this.find('.slice-right').transition({
+              'translate': '0, 0'
+            }, 600, 'ease-out');
+            $this.find('.slice-left').transition({
+              'translate': '-0, -0'
+            }, 500, 'ease-out');
+            $this.find('.back').toggleClass('hovered');
+
+          })
         .attr('style',widthHeightStyle)
         .find('.card').addClass('animate');
     }
