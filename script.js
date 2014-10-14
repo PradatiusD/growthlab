@@ -10,60 +10,94 @@ angular.module('growthLab', [])
     {
       "width": 303,
       "height": 324,
-      "front": "img/investor.jpg",
+      "front": false,
       "back": "img/teal-bg.png",
       "class": "chart-left-empty"
     },
     {
       "width": 361,
       "height": 324,
-      "front": "img/investor.jpg",
+      "front": "img/financial-management@2x.jpg",
       "back": "img/chart-icon-flat.png",
       "class": "chart-icon"
     },
     {
       "width": 400,
       "height": 367,
-      "front": "img/traffic.jpg",
+      "front": "img/raising-capital@2x.jpg",
       "back":  "img/chevron-up-right-icon-flat.png",
       "class": "chevron-up-right"
     },
     {
       "width": 653,
-      "height": 454,
-      "front": "img/traffic.jpg",
+      "height": 457,
+       "front": false,
       "back": "img/welcome-text.png",
       "class": "welcome-text"
     },
     {
       "width": 155,
-      "height": 146,
-      "front": "img/investor.jpg",
+      "height": 150,
+      "front": false,
       "back": "img/teal-bg.png",
       "class": "small-square-top"
     },
     {
       "width": 155,
       "height": 107,
-      "front": "img/laptop.jpg",
+      "front": false,
       "back": "img/teal-bg.png",
       "class": "small-square-bottom"
     },
     {
-      "width": 410,
+      "width": 412,
       "height": 388,
-      "front": "img/closeup.jpg",
+      "front": "img/cfo-services@2x.jpg",
       "back": "img/binoculars-icon-flat.png",
       "class": "binoculars"
     },
     {
       "width": 400,
       "height": 301,
-      "front": "img/laptop.jpg",
+      "front": "img/business-modeling@2x.jpg",
       "back": "img/document-icon-flat.png",
       "class": "document"
     }
   ];
+
+  var isSimpleDesign = true;
+
+  $scope.changeCards = function () {
+    
+    if (isSimpleDesign) {
+
+      $scope.cards = $scope.cards.map(function(card) {
+        card.back = card.back.replace('-flat.png', '.png');
+        if (card.back == "img/teal-bg.png") {
+          card.back = "img/"+ card.class + ".png";
+        }
+        return card;
+      });
+
+      isSimpleDesign = false;
+
+
+    } else {
+
+      $scope.cards = $scope.cards.map(function(card) {
+
+        if (card.class === "small-square-bottom" || card.class === "small-square-top" || card.class === "chart-left-empty") {
+          card.back = "img/teal-bg.png";
+        } else if (card.class !== "welcome-text") {
+          card.back = card.back.replace('.png','-flat.png');
+        }
+        
+        return card;
+      });
+
+      isSimpleDesign = true;
+    }
+  };
 
 }])
 
@@ -72,7 +106,7 @@ angular.module('growthLab', [])
   return {
     template: function(scope, attrs){
   
-      return  '<article class="flipHolder">'+
+      return  '<article class="sliceHolder">'+
                 '<div class="card">'+
                   '<figure class="front slice-right" style="background-image:url('+attrs.front+')"></figure>'+
                   '<figure class="front slice-left" style="background-image:url('+attrs.front+')"></figure>'+
@@ -87,40 +121,50 @@ angular.module('growthLab', [])
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
       $card = jQuery(element);
 
-      if (scope.card.class != 'welcome-text') {
+      function isMoving($obj) {
+        return $obj.find('.slice-right').queue().length > 1;
+      }
+
+      if (scope.card.front) {
         $card.hover(
           function(){
             var $this = jQuery(this);
 
-            $this.find('.slice-right').transition({
-              'translate': '0, 0',
-              'delay': 300,
-              'duration': 400,
-              'easing': 'ease-out'
-            });
+            if (!isMoving($this)) {
+              $this.find('.slice-right').transition({
+                'translate': '0, 0',
+                'delay': 300,
+                'duration': 400,
+                'easing': 'ease-out'
+              });
 
-            $this.find('.slice-left').transition({
-              'translate': '-0, -0',
-              'duration': 600,
-              'easing':'ease-out'
-            });
+              $this.find('.slice-left').transition({
+                'translate': '-0, -0',
+                'duration': 600,
+                'easing':'ease-out'
+              });
+            }
 
             $this.find('.back').toggleClass('hovered');
 
           },function(){
             var $this = jQuery(this);
 
-            $this.find('.slice-right').transition({
-              'translate': '100%, -100%',
-              'duration': 600,
-              'easing': 'ease-in'
-            });
+            if (!isMoving($this)) {
+              
+              $this.find('.slice-right').transition({
+                'translate': '100%, -100%',
+                'duration': 600,
+                'easing': 'ease-in'
+              });
 
-            $this.find('.slice-left').transition({
-              'translate': '-100%, 100%',
-              'duration': 600,
-              'easing': 'ease-in'
-            });
+              $this.find('.slice-left').transition({
+                'translate': '-100%, 100%',
+                'duration': 600,
+                'easing': 'ease-in'
+              });
+
+            }
 
             $this.find('.back').toggleClass('hovered');
 

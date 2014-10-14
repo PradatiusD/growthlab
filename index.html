@@ -10,6 +10,14 @@
 </head>
 <body ng-app="growthLab">
   <div ng-controller="SlideController">
+
+    <header class="container text-center">
+      <h1 style="color:white;">Slice demo</h1>
+      <button type="button" class="btn btn-default" ng-click="changeCards()">Change Image Style</button>
+      <hr>
+      <br> 
+    </header>
+
     <div class="slide-container">
       <div ng-repeat="card in cards">
         <section card-slide width="{{card.width}}" height="{{card.height}}" front="{{card.front}}" back="{{card.back}}" class="{{card.class}}"></section>

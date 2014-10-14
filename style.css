@@ -8,8 +8,19 @@ body {
   .slide-container section {
     position: absolute;
     display: inline-block;
-    border: 2px solid #FFF;
-    overflow: hidden; }
+    overflow: hidden;
+    border-color: #FFF;
+    border-style: solid;
+    border-width: 4px; }
+    @media screen and (min-width: 870px) and (max-width: 1180px) {
+      .slide-container section {
+        border-width: 3px; } }
+    @media screen and (min-width: 567px) and (max-width: 869px) {
+      .slide-container section {
+        border-width: 2px; } }
+    @media screen and (max-width: 566px) {
+      .slide-container section {
+        border-width: 1px; } }
 
 .welcome-text {
   left: 0;
@@ -33,7 +44,7 @@ body {
 
 .binoculars {
   top: 18%;
-  right: 27.25%; }
+  right: 27.2%; }
 
 .chart-left-empty {
   left: 0;
@@ -93,7 +104,7 @@ body {
   -o-transform: translate(-100%, 100%);
   transform: translate(-100%, 100%); }
 
-.flipHolder {
+.sliceHolder {
   position: relative;
   background: #ffca30;
   width: 100%;

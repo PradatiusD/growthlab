@@ -1,4 +1,6 @@
 @import "bower_components/bourbon/dist/bourbon"
+@import "bower_components/sass-mediaqueries/media-queries"
+
 
 /* Presentation */
 body
@@ -10,9 +12,17 @@ body
   
   section
     position: absolute
-    display: inline-block
-    border: 2px solid #FFF
+    display: inline-block       
     overflow: hidden
+    border-color: #FFF
+    border-style: solid
+    border-width: 4px
+    +screen(870px, 1180px)
+      border-width: 3px
+    +screen(567px, 869px)
+      border-width: 2px
+    +max-screen(566px)
+      border-width: 1px
 
 .welcome-text
   left: 0
@@ -36,7 +46,7 @@ body
 
 .binoculars
   top: 18%
-  right: 27.25%
+  right: 27.2%
 
 .chart-left-empty
   left: 0
@@ -89,7 +99,7 @@ body
   clip-path: polygon($weirdPolygon)
   +transform(translate(-100%, 100%))
 
-.flipHolder
+.sliceHolder
   position: relative
   background: #ffca30
   width: 100%
