@@ -3,7 +3,7 @@
   $pd_whitelist = array(
     '127.0.0.1',
     '::1',
-    '70.40.198.228'
+    '108.132.197.4'
   );
 
   $is_pd_dev = in_array($_SERVER['REMOTE_ADDR'], $pd_whitelist);
