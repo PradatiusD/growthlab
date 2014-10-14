@@ -75,16 +75,19 @@ body
       background-size: 110% 110%
 
 .slice-right
-  $weirdPolygon: 0 101%, 0 95%, 100% 0, 100% 100%
+  $weirdPolygon: 0% 0%, 0% 2%, 100% 100%, 100% 0%
+  // offset triangle $weirdPolygon: 18% 0%, 100% 0%, 100% 100%
   /* polygon to avoid weird slice lines */
   -webkit-clip-path: polygon($weirdPolygon)
   clip-path: polygon($weirdPolygon)
+  +transform(translate(100%, -100%))
 
 .slice-left
-  /* Triangle */
-  $weirdPolygon: 101% 0, 101% 0, 0 100%, 0% 0%
+  $weirdPolygon: 100% 100%, 100% 96%, 0% 0%, 0 100%
+  // offset triangle  $weirdPolygon: 0% 0%, 18% 0, 100% 100%, 0% 100%
   -webkit-clip-path: polygon($weirdPolygon)
   clip-path: polygon($weirdPolygon)
+  +transform(translate(-100%, 100%))
 
 .flipHolder
   position: relative

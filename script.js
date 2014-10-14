@@ -10,57 +10,57 @@ angular.module('growthLab', [])
     {
       "width": 303,
       "height": 324,
-      "front": "img/teal-bg.png",
-      "back": "http://placekitten.com/303/324",
+      "front": "img/investor.jpg",
+      "back": "img/teal-bg.png",
       "class": "chart-left-empty"
     },
     {
       "width": 361,
       "height": 324,
-      "front": "img/chart-icon-flat.png",
-      "back": "http://placekitten.com/361/324",
+      "front": "img/investor.jpg",
+      "back": "img/chart-icon-flat.png",
       "class": "chart-icon"
     },
     {
       "width": 400,
       "height": 367,
-      "front": "img/chevron-up-right-icon-flat.png",
-      "back": "http://placekitten.com/400/367",
+      "front": "img/traffic.jpg",
+      "back":  "img/chevron-up-right-icon-flat.png",
       "class": "chevron-up-right"
     },
     {
       "width": 653,
       "height": 454,
-      "front": "img/welcome-text.png",
-      "back": "img/cat-happy.jpg",
+      "front": "img/traffic.jpg",
+      "back": "img/welcome-text.png",
       "class": "welcome-text"
     },
     {
       "width": 155,
       "height": 146,
-      "front": "img/teal-bg.png",
-      "back": "http://placekitten.com/155/146",
+      "front": "img/investor.jpg",
+      "back": "img/teal-bg.png",
       "class": "small-square-top"
     },
     {
       "width": 155,
       "height": 107,
-      "front": "img/teal-bg.png",
-      "back": "http://placekitten.com/155/107",
+      "front": "img/laptop.jpg",
+      "back": "img/teal-bg.png",
       "class": "small-square-bottom"
     },
     {
       "width": 410,
       "height": 388,
-      "front": "img/binoculars-icon-flat.png",
-      "back": "http://placekitten.com/410/388",
+      "front": "img/closeup.jpg",
+      "back": "img/binoculars-icon-flat.png",
       "class": "binoculars"
     },
     {
       "width": 400,
       "height": 301,
-      "front": "img/document-icon-flat.png",
-      "back": "img/cat-happy.jpg",
+      "front": "img/laptop.jpg",
+      "back": "img/document-icon-flat.png",
       "class": "document"
     }
   ];
@@ -73,7 +73,7 @@ angular.module('growthLab', [])
     template: function(scope, attrs){
   
       return  '<article class="flipHolder">'+
-                '<div class="card" ng-style="{transitionDuration:speed}">'+
+                '<div class="card">'+
                   '<figure class="front slice-right" style="background-image:url('+attrs.front+')"></figure>'+
                   '<figure class="front slice-left" style="background-image:url('+attrs.front+')"></figure>'+
                   '<figure class="back"  style="background-image:url('+attrs.back+')" ></figure>'+
@@ -85,17 +85,25 @@ angular.module('growthLab', [])
       var totalWidth = 303+361+427+367;
       var totalHeight = 388*2;
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
+      $card = jQuery(element);
 
-      jQuery(element)
-        .hover(
+      if (scope.card.class != 'welcome-text') {
+        $card.hover(
           function(){
             var $this = jQuery(this);
+
             $this.find('.slice-right').transition({
-              'translate': '100%, 100%'
-            }, 600, 'ease-out');
+              'translate': '0, 0',
+              'delay': 300,
+              'duration': 400,
+              'easing': 'ease-out'
+            });
+
             $this.find('.slice-left').transition({
-              'translate': '-100%, -100%'
-            }, 500, 'ease-out');
+              'translate': '-0, -0',
+              'duration': 600,
+              'easing':'ease-out'
+            });
 
             $this.find('.back').toggleClass('hovered');
 
@@ -103,16 +111,22 @@ angular.module('growthLab', [])
             var $this = jQuery(this);
 
             $this.find('.slice-right').transition({
-              'translate': '0, 0'
-            }, 600, 'ease-out');
+              'translate': '100%, -100%',
+              'duration': 600,
+              'easing': 'ease-in'
+            });
+
             $this.find('.slice-left').transition({
-              'translate': '-0, -0'
-            }, 500, 'ease-out');
+              'translate': '-100%, 100%',
+              'duration': 600,
+              'easing': 'ease-in'
+            });
+
             $this.find('.back').toggleClass('hovered');
 
-          })
-        .attr('style',widthHeightStyle)
-        .find('.card').addClass('animate');
+          });
+      }
+        $card.attr('style',widthHeightStyle);
     }
   };
 }]);
