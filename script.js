@@ -11,21 +11,21 @@ angular.module('growthLab', [])
       "width": 303,
       "height": 324,
       "front": false,
-      "back": "img/teal-bg.png",
+      "back": "img/chart-left-empty.png",
       "class": "chart-left-empty"
     },
     {
       "width": 361,
       "height": 324,
       "front": "img/financial-management@2x.jpg",
-      "back": "img/chart-icon-flat.png",
+      "back": "img/chart-icon.png",
       "class": "chart-icon"
     },
     {
       "width": 400,
       "height": 367,
       "front": "img/raising-capital@2x.jpg",
-      "back":  "img/chevron-up-right-icon-flat.png",
+      "back":  "img/chevron-up-right-icon.png",
       "class": "chevron-up-right"
     },
     {
@@ -39,28 +39,28 @@ angular.module('growthLab', [])
       "width": 155,
       "height": 150,
       "front": false,
-      "back": "img/teal-bg.png",
+      "back": "img/small-square-top.png",
       "class": "small-square-top"
     },
     {
       "width": 155,
       "height": 107,
       "front": false,
-      "back": "img/teal-bg.png",
+      "back": "img/small-square-bottom.png",
       "class": "small-square-bottom"
     },
     {
       "width": 412,
       "height": 388,
       "front": "img/cfo-services@2x.jpg",
-      "back": "img/binoculars-icon-flat.png",
+      "back": "img/binoculars-icon.png",
       "class": "binoculars"
     },
     {
       "width": 400,
       "height": 301,
       "front": "img/business-modeling@2x.jpg",
-      "back": "img/document-icon-flat.png",
+      "back": "img/document-icon.png",
       "class": "document"
     }
   ].map(function(card){
@@ -69,7 +69,7 @@ angular.module('growthLab', [])
     return card;
   });
 
-  var isSimpleDesign = true;
+  var isSimpleDesign = false;
 
   $scope.changeCards = function () {
     
