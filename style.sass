@@ -1,6 +1,23 @@
 @import "bower_components/bourbon/dist/bourbon"
 @import "bower_components/sass-mediaqueries/media-queries"
 
+/* Cancel Jay's CSS */
+.home-section-1
+  background: #00bba8
+  padding: 0
+  .wrap
+    max-width: 100%
+    padding: 0 !important
+
+.home-section-2
+  margin-top: -4px
+  +screen(870px, 1180px)
+    margin-top: -3px
+  +screen(567px, 869px)
+    margin-top: -2px
+  +max-screen(566px)
+    margin-top: -1px
+
 /* Layout */
 .slide-container
   position: relative

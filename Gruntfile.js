@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         },
         cache: 'sftpCache.json',
         src: '.',
-        dest: 'wp-content/plugins/growthlab-grid',
+        dest: 'wp-content/growthlab-grid',
         exclusions: grunt.file.read('.gitignore').split('\n').concat(['img','.git']),
         progress: true
       }

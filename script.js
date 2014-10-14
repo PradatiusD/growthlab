@@ -63,7 +63,11 @@ angular.module('growthLab', [])
       "back": "img/document-icon-flat.png",
       "class": "document"
     }
-  ];
+  ].map(function(card){
+    card.front = pd_path.concat(card.front);
+    card.back  = pd_path.concat(card.back);
+    return card;
+  });
 
   var isSimpleDesign = true;
 
@@ -105,7 +109,7 @@ angular.module('growthLab', [])
 
   return {
     template: function(scope, attrs){
-  
+
       return  '<article class="sliceHolder">'+
                 '<div class="card">'+
                   '<figure class="front slice-right" style="background-image:url('+attrs.front+')"></figure>'+
@@ -176,7 +180,7 @@ angular.module('growthLab', [])
 }]);
 
 function setFlippyCanvas() {
-  var $flippyCanvas = jQuery(".slide-container");
+  var $flippyCanvas = jQuery(".slide-container, .home-section-1");
   $flippyCanvas.height($flippyCanvas.width()*(645/1200));
 }
 

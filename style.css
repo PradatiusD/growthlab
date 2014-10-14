@@ -1,3 +1,23 @@
+/* Cancel Jay's CSS */
+.home-section-1 {
+  background: #00bba8;
+  padding: 0; }
+  .home-section-1 .wrap {
+    max-width: 100%;
+    padding: 0 !important; }
+
+.home-section-2 {
+  margin-top: -4px; }
+  @media screen and (min-width: 870px) and (max-width: 1180px) {
+    .home-section-2 {
+      margin-top: -3px; } }
+  @media screen and (min-width: 567px) and (max-width: 869px) {
+    .home-section-2 {
+      margin-top: -2px; } }
+  @media screen and (max-width: 566px) {
+    .home-section-2 {
+      margin-top: -1px; } }
+
 /* Layout */
 .slide-container {
   position: relative; }

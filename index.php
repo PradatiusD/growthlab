@@ -3,16 +3,23 @@
   $pd_whitelist = array(
     '127.0.0.1',
     '::1',
-    'pradadesigners.com',
-    'growthlab.studioissa.com'
+    'pradadesigners.com'
   );
 
   $is_pd_dev = in_array($_SERVER["SERVER_NAME"], $pd_whitelist);
+
+  function pd_path_fix () {
+    global $is_pd_dev;
+    if (!$is_pd_dev) {
+      echo 'http://growthlab.studioissa.com/wp-content/growthlab-grid/';
+    }
+    echo '';
+  }
 ?>
 
 <?php if ($is_pd_dev): ?>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link   href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
   <style>
     /* For Dev Presentation */
     body {
@@ -21,21 +28,25 @@
   </style>
 <?php endif; ?>
 
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/jquery.transit/jquery.transit.js"></script>
+<script src="<?php pd_path_fix();?>bower_components/angular/angular.min.js"></script>
+<script src="<?php pd_path_fix();?>bower_components/jquery.transit/jquery.transit.js"></script>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<?php pd_path_fix();?>style.css">
 
 
 <section ng-app="growthLab">
   <div ng-controller="SlideController">
 
-    <header class="container text-center">
-      <h1 style="color:white;">Slice demo</h1>
-      <button type="button" class="btn btn-default" ng-click="changeCards()">Change Image Style</button>
-      <hr>
-      <br> 
-    </header>
+    <?php if ($is_pd_dev): ?>
+      
+      <header class="container text-center">
+        <h1 style="color:white;">Slice demo</h1>
+        <button type="button" class="btn btn-default" ng-click="changeCards()">Change Image Style</button>
+        <hr>
+        <br> 
+      </header>
+
+    <?php endif ?>
 
     <div class="slide-container">
       <div ng-repeat="card in cards">
@@ -45,8 +56,12 @@
   </div>
   <br>
   <hr>
-  <script src="script.js"></script>
+  <script src="<?php pd_path_fix();?>script.js"></script>
 </section>
+
+<script>
+  var pd_path = '<?php pd_path_fix();?>';
+</script>
 
 <?php if ($is_pd_dev): ?>
   <img src="img/goal.png" class="img-responsive">
