@@ -3,11 +3,11 @@
   $pd_whitelist = array(
     '127.0.0.1',
     '::1',
-    '108.132.197.4'
+    'pradadesigners.com',
+    'growthlab.studioissa.com'
   );
 
-  $is_pd_dev = in_array($_SERVER['REMOTE_ADDR'], $pd_whitelist);
-
+  $is_pd_dev = in_array($_SERVER["SERVER_NAME"], $pd_whitelist);
 ?>
 
 <?php if ($is_pd_dev): ?>
