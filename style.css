@@ -65,10 +65,9 @@
 .chart-left-empty {
   left: 0;
   top: 0;
-  background-color: #00bba8; }
-  
-  .chart-left-empty .sliceHolder  {
-  background-color: #00bba8; }
+  background: #00bba8; }
+  .chart-left-empty .sliceHolder {
+    background: #00bba8; }
 
 .chart-icon {
   top: 0;

@@ -1,9 +1,11 @@
 @import "bower_components/bourbon/dist/bourbon"
 @import "bower_components/sass-mediaqueries/media-queries"
 
+$darkTeal: #00bba8
+
 /* Cancel Jay's CSS */
 .home-section-1
-  background: #00bba8
+  background: $darkTeal
   padding: 0
   .wrap
     max-width: 100%
@@ -63,6 +65,10 @@
 .chart-left-empty
   left: 0
   top: 0
+  background: $darkTeal
+
+  .sliceHolder
+    background: $darkTeal
 
 .chart-icon
   top: 0
