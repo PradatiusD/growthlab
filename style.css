@@ -1,4 +1,8 @@
-/* Cancel Jay's CSS */
+/* Code for http://growthlab.studioissa.com positioning */
+@media screen and (max-width: 960px) {
+  .site-header {
+    position: relative !important; } }
+
 .home-section-1 {
   background: #00bba8;
   padding: 0; }
@@ -6,16 +10,16 @@
     max-width: 100%;
     padding: 0 !important; }
 
-.home-section-2 {
+.home-section-2, .home-section-1 {
   margin-top: -4px; }
   @media screen and (min-width: 870px) and (max-width: 1180px) {
-    .home-section-2 {
+    .home-section-2, .home-section-1 {
       margin-top: -3px; } }
   @media screen and (min-width: 567px) and (max-width: 869px) {
-    .home-section-2 {
+    .home-section-2, .home-section-1 {
       margin-top: -2px; } }
   @media screen and (max-width: 566px) {
-    .home-section-2 {
+    .home-section-2, .home-section-1 {
       margin-top: -1px; } }
 
 /* Layout */
