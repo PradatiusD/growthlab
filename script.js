@@ -69,40 +69,6 @@ angular.module('growthLab', [])
     return card;
   });
 
-  var isSimpleDesign = false;
-
-  $scope.changeCards = function () {
-    
-    if (isSimpleDesign) {
-
-      $scope.cards = $scope.cards.map(function(card) {
-        card.back = card.back.replace('-flat.png', '.png');
-        if (card.back == "img/teal-bg.png") {
-          card.back = "img/"+ card.class + ".png";
-        }
-        return card;
-      });
-
-      isSimpleDesign = false;
-
-
-    } else {
-
-      $scope.cards = $scope.cards.map(function(card) {
-
-        if (card.class === "small-square-bottom" || card.class === "small-square-top" || card.class === "chart-left-empty") {
-          card.back = "img/teal-bg.png";
-        } else if (card.class !== "welcome-text") {
-          card.back = card.back.replace('.png','-flat.png');
-        }
-        
-        return card;
-      });
-
-      isSimpleDesign = true;
-    }
-  };
-
 }])
 
 .directive('cardSlide', ['slideService', function(slideService){
@@ -123,7 +89,7 @@ angular.module('growthLab', [])
       var totalWidth = 303+361+427+367;
       var totalHeight = 388*2;
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
-      $card = jQuery(element);
+      var $card = jQuery(element);
 
       function isMoving($obj) {
         return $obj.find('.slice-right').queue().length > 1;
@@ -174,15 +140,65 @@ angular.module('growthLab', [])
 
           });
       }
-        $card.attr('style',widthHeightStyle);
+
+      $card.attr('style',widthHeightStyle);
     }
   };
 }]);
 
-function setFlippyCanvas() {
-  var $flippyCanvas = jQuery(".slide-container, .home-section-1");
-  $flippyCanvas.height($flippyCanvas.width()*(645/1200));
-}
+(function($){
 
-jQuery(document).ready(setFlippyCanvas);
-jQuery(window).resize(setFlippyCanvas);
+  function setFlippyCanvas() {
+    var $flippyCanvas = $(".slide-container, .home-section-1");
+    $flippyCanvas.height($flippyCanvas.width()*(645/1200));
+  }
+
+  $(document).ready(setFlippyCanvas);
+  $(window).resize(setFlippyCanvas);
+
+
+  // If a touch device randomly animate this
+  // By triggering hover event
+
+  function is_touch_device() {
+    return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+  }
+ 
+  if (is_touch_device()){
+
+    $(document).ready(function(){
+
+      var flipCardClasses = ['document', 'binoculars', 'chart-icon', 'chevron-up-right'];
+
+      var $cards = $('.slide-container').find('section').filter(function(index) {
+        return $.inArray($(this).attr('class'), flipCardClasses) > -1;
+      });
+
+      var lastNumber = null;
+
+      setInterval(function(){
+
+        var cardNumber = Math.ceil(Math.random()*$cards.length)-1;
+        var $selectedCard;
+
+        if (lastNumber === cardNumber) {
+          cardNumber++;
+          cardNumber = cardNumber % $cards.length;
+        }
+
+        $selectedCard = $cards.eq(cardNumber);
+
+        $selectedCard.trigger('mouseenter');
+        setTimeout(function(){
+          $selectedCard.trigger('mouseleave');
+        },4000);
+
+        lastNumber = cardNumber;
+      },4000);
+
+    });
+  }
+
+
+})(jQuery);
+

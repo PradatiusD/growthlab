@@ -41,7 +41,6 @@
       
       <header class="container text-center">
         <h1 style="color:white;">Slice demo</h1>
-        <button type="button" class="btn btn-default" ng-click="changeCards()">Change Image Style</button>
         <hr>
         <br> 
       </header>
