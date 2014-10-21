@@ -14,10 +14,10 @@
   margin-top: -4px; }
   @media screen and (min-width: 870px) and (max-width: 1180px) {
     .home-section-2, .home-section-1 {
-      margin-top: -3px; } }
+      margin-top: -2px; } }
   @media screen and (min-width: 567px) and (max-width: 869px) {
     .home-section-2, .home-section-1 {
-      margin-top: -2px; } }
+      margin-top: -1px; } }
   @media screen and (max-width: 566px) {
     .home-section-2, .home-section-1 {
       margin-top: -1px; } }
@@ -31,51 +31,78 @@
     overflow: hidden;
     border-color: #FFF;
     border-style: solid;
-    border-width: 4px; }
+    border-width: 3px; }
     @media screen and (min-width: 870px) and (max-width: 1180px) {
       .slide-container section {
-        border-width: 3px; } }
+        border-width: 2px; } }
     @media screen and (min-width: 567px) and (max-width: 869px) {
       .slide-container section {
-        border-width: 2px; } }
+        border-width: 1px; } }
     @media screen and (max-width: 566px) {
       .slide-container section {
         border-width: 1px; } }
 
+/* Positioning of each card */
 .welcome-text {
+  left: 11.7%;
+  bottom: 0; }
+
+.welcome-left-subdued {
   left: 0;
   bottom: 0; }
 
 .small-square-top {
-  left: 44.6%;
+  left: 45.1%;
   bottom: 13.4%; }
 
 .small-square-bottom {
-  left: 44.6%;
+  left: 45.1%;
   bottom: 0; }
 
 .chevron-up-right {
-  right: 0;
+  right: 13.5%;
   top: 0; }
 
+.chevron-right-subdued {
+  top: 30%;
+  right: 0; }
+
+.chevron-right-empty {
+  bottom: 19.5%;
+  right: 0; }
+
 .document {
+  right: 13.6%;
+  bottom: 0; }
+
+.document-right-bar {
   right: 0;
   bottom: 0; }
 
 .binoculars {
   top: 18%;
-  right: 27.2%; }
+  right: 33.5%; }
+
+.chart-left-empty, .chart-left-empty-small, .chevron-right-empty {
+  background-color: #00bba8; }
+  .chart-left-empty .sliceHolder, .chart-left-empty-small .sliceHolder, .chevron-right-empty .sliceHolder {
+    background-color: #00bba8; }
 
 .chart-left-empty {
+  left: 11.7%;
+  top: 0; }
+
+.chart-left-empty-small {
   left: 0;
-  top: 0;
-  background-color: #00bba8; }
-  .chart-left-empty .sliceHolder {
-    background-color: #00bba8; }
+  top: 10%; }
+
+.chart-left-subdued {
+  left: 4.35%;
+  top: 10%; }
 
 .chart-icon {
   top: 0;
-  left: 20%; }
+  left: 26.85%; }
 
 /* Actual code */
 .card {

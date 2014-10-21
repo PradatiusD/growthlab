@@ -8,60 +8,102 @@ angular.module('growthLab', [])
 
   $scope.cards = [
     {
-      "width": 303,
-      "height": 324,
+      "width": 318,
+      "height": 330,
       "front": false,
       "back": false,
       "class": "chart-left-empty"
     },
     {
-      "width": 361,
-      "height": 324,
+      "width": 94,
+      "height": 112,
+      "front": false,
+      "back": false,
+      "class": "chart-left-empty-small"
+    },
+    {
+      "width": 156,
+      "height": 112,
+      "front": false,
+      "back": "img/chart-left-subdued.png",
+      "class": "chart-left-subdued"
+    },
+    {
+      "width": 378,
+      "height": 329,
       "front": "img/financial-management-v2@2x.jpg",
       "back": "img/chart-icon.png",
       "class": "chart-icon"
     },
     {
-      "width": 400,
-      "height": 367,
+      "width": 414,
+      "height": 378,
       "front": "img/raising-capital-v2@2x.jpg",
       "back":  "img/chevron-up-right-icon.png",
       "class": "chevron-up-right"
     },
     {
-      "width": 653,
-      "height": 457,
+      "width": 281,
+      "height": 227,
+      "front": false,
+      "back":  "img/chevron-right-subdued.png",
+      "class": "chevron-right-subdued"
+    },
+    {
+      "width": 281,
+      "height": 190,
+      "front": false,
+      "back":  false,
+      "class": "chevron-right-empty"
+    },
+    {
+      "width": 245,
+      "height": 126,
+       "front": false,
+      "back": "img/welcome-left-subdued.png",
+      "class": "welcome-left-subdued"
+    },
+    {
+      "width": 687,
+      "height": 480,
        "front": false,
       "back": "img/welcome-text.png",
       "class": "welcome-text"
     },
     {
-      "width": 155,
-      "height": 150,
+      "width": 166,
+      "height": 158,
       "front": false,
       "back": "img/small-square-top.png",
       "class": "small-square-top"
     },
     {
-      "width": 155,
-      "height": 107,
+      "width": 166,
+      "height": 113,
       "front": false,
       "back": "img/small-square-bottom.png",
       "class": "small-square-bottom"
     },
     {
-      "width": 412,
-      "height": 388,
+      "width": 438,
+      "height": 405,
       "front": "img/cfo-services-v3@2x.jpg",
       "back": "img/binoculars-icon.png",
       "class": "binoculars"
     },
     {
-      "width": 400,
-      "height": 301,
+      "width": 413,
+      "height": 307,
       "front": "img/business-modeling-v3@2x.jpg",
       "back": "img/document-icon.png",
       "class": "document"
+    },
+    {
+      "width": 283,
+      "height": 161,
+      "front": false,
+      "back": "img/document-right-bar.png",
+      "class": "document-right-bar"
     }
   ].map(function(card){
     card.front = pd_path.concat(card.front);
@@ -86,8 +128,8 @@ angular.module('growthLab', [])
     },
     link: function(scope, element, attrs){
 
-      var totalWidth = 303+361+427+367;
-      var totalHeight = 388*2;
+      var totalWidth = 2046;
+      var totalHeight = 804;
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
       var $card = jQuery(element);
 
@@ -150,7 +192,7 @@ angular.module('growthLab', [])
 
   function setFlippyCanvas() {
     var $flippyCanvas = $(".slide-container, .home-section-1");
-    $flippyCanvas.height($flippyCanvas.width()*(645/1200));
+    $flippyCanvas.height($flippyCanvas.width()*(804/2046));
   }
 
   $(document).ready(setFlippyCanvas);

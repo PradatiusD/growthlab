@@ -1,7 +1,7 @@
 GrowthLab Card Flipping
 
 
-# What to put in widget
+# What to put in widget to improve rendering
 ```php
 
 <?php
@@ -22,5 +22,8 @@ GrowthLab Card Flipping
 <img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/binoculars-icon.png" style="display:none;"/>
 <img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/business-modeling@2x.jpg" style="display:none;"/>
 <img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/document-icon.png" style="display:none;"/>
-
+<img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/chart-left-subdued.png" style="display:none;"/>
+<img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/chevron-right-subdued.png" style="display:none;"/>
+<img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/document-right-bar.png" style="display:none;"/>
+<img src="http://growthlab.studioissa.com/wp-content/growthlab-grid/img/welcome-left-subdued.png" style="display:none;"/>
 ```

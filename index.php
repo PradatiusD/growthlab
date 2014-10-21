@@ -63,6 +63,6 @@
 </script>
 
 <?php if ($is_pd_dev): ?>
-  <img src="img/goal.png" class="img-responsive">
+  <img src="img/goal.png" class="img-responsive" style="border: 2px solid #fff;">
   <script src="//localhost:35729/livereload.js"></script>  
 <?php endif ?>

@@ -19,9 +19,9 @@ $darkTeal: #00bba8
 .home-section-2, .home-section-1
   margin-top: -4px
   +screen(870px, 1180px)
-    margin-top: -3px
-  +screen(567px, 869px)
     margin-top: -2px
+  +screen(567px, 869px)
+    margin-top: -1px
   +max-screen(566px)
     margin-top: -1px
 
@@ -35,51 +35,80 @@ $darkTeal: #00bba8
     overflow: hidden
     border-color: #FFF
     border-style: solid
-    border-width: 4px
+    border-width: 3px
     +screen(870px, 1180px)
-      border-width: 3px
-    +screen(567px, 869px)
       border-width: 2px
+    +screen(567px, 869px)
+      border-width: 1px
     +max-screen(566px)
       border-width: 1px
 
+/* Positioning of each card */
 .welcome-text
+  left: 11.7%
+  bottom: 0
+
+.welcome-left-subdued
   left: 0
   bottom: 0
 
 .small-square-top
-  left: 44.6%
+  left: 45.1%
   bottom: 13.4%
 
 .small-square-bottom
-  left: 44.6%
+  left: 45.1%
   bottom: 0
 
 .chevron-up-right
-  right: 0
+  right: 13.5%
   top: 0
 
+.chevron-right-subdued
+  top: 30%
+  right: 0
+
+.chevron-right-empty
+  bottom: 19.5%
+  right: 0
+
 .document
+  right: 13.6%
+  bottom: 0
+
+.document-right-bar
   right: 0
   bottom: 0
 
 .binoculars
   top: 18%
-  right: 27.2%
+  right: 33.5%
 
-.chart-left-empty
-  left: 0
-  top: 0
+
+.chart-left-empty, .chart-left-empty-small, .chevron-right-empty
   background-color: $darkTeal
 
   .sliceHolder
     background-color: $darkTeal
 
+
+.chart-left-empty
+  left: 11.7%
+  top: 0
+
+.chart-left-empty-small
+  left: 0
+  top: 10%
+
+.chart-left-subdued
+  left: 4.35%
+  top: 10%
+
 .chart-icon
   top: 0
-  left: 20%
+  left: 26.85%
 
-/* Actual code*/
+/* Actual code */
 .card
   width: 100%
   height: 100%
