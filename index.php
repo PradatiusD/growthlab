@@ -29,7 +29,6 @@
 <?php endif; ?>
 
 <script src="<?php pd_path_fix();?>bower_components/angular/angular.min.js"></script>
-<script src="<?php pd_path_fix();?>bower_components/jquery.transit/jquery.transit.js"></script>
 
 <link rel="stylesheet" href="<?php pd_path_fix();?>style.css">
 

@@ -133,53 +133,15 @@ angular.module('growthLab', [])
       var widthHeightStyle ='height:'+attrs.height/totalHeight*100+'%;width:'+attrs.width/totalWidth*100+'%;"';
       var $card = jQuery(element);
 
-      function isMoving($obj) {
-        return $obj.find('.slice-right').queue().length > 1;
-      }
-
       if (scope.card.front) {
         $card.hover(
           function(){
             var $this = jQuery(this);
-
-            if (!isMoving($this)) {
-              $this.find('.slice-right').transition({
-                'translate': '0, 0',
-                'delay': 300,
-                'duration': 400,
-                'easing': 'ease-out'
-              });
-
-              $this.find('.slice-left').transition({
-                'translate': '-0, -0',
-                'duration': 600,
-                'easing':'ease-out'
-              });
-            }
-
-            $this.find('.back').toggleClass('hovered');
+            $this.find('figure').toggleClass('hovered');
 
           },function(){
             var $this = jQuery(this);
-
-            if (!isMoving($this)) {
-              
-              $this.find('.slice-right').transition({
-                'translate': '100%, -100%',
-                'duration': 600,
-                'easing': 'ease-in'
-              });
-
-              $this.find('.slice-left').transition({
-                'translate': '-100%, 100%',
-                'duration': 600,
-                'easing': 'ease-in'
-              });
-
-            }
-
-            $this.find('.back').toggleClass('hovered');
-
+            $this.find('figure').toggleClass('hovered');
           });
       }
 
