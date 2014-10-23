@@ -52,8 +52,6 @@
       </div>
     </div>    
   </div>
-  <br>
-  <hr>
   <script src="<?php pd_path_fix();?>script.js"></script>
 </section>
 
@@ -62,6 +60,8 @@
 </script>
 
 <?php if ($is_pd_dev): ?>
+  <br>
+  <hr>
   <img src="img/goal.png" class="img-responsive" style="border: 2px solid #fff;">
   <script src="//localhost:35729/livereload.js"></script>  
 <?php endif ?>

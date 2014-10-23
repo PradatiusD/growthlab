@@ -153,8 +153,25 @@ angular.module('growthLab', [])
 (function($){
 
   function setFlippyCanvas() {
-    var $flippyCanvas = $(".slide-container, .home-section-1");
-    $flippyCanvas.height($flippyCanvas.width()*(804/2046));
+
+    var $slideContainer = $('.slide-container');
+    var $homeSection    = $('.home-section-1');
+
+    if ($homeSection.length > 0) {
+      
+      var newWidth = $homeSection.height() * (2046/804);
+
+      $slideContainer
+        .height($homeSection.height())
+        .width(newWidth)
+        .css({
+          right: ((newWidth - $homeSection.width()) / 2)  + 'px'
+        });
+
+    } else {
+      // For dev site
+      $slideContainer.height($slideContainer.width()*(804/2046));
+    }
   }
 
   $(document).ready(setFlippyCanvas);
@@ -198,7 +215,9 @@ angular.module('growthLab', [])
         },4000);
 
         lastNumber = cardNumber;
-      },4000);
+
+        // below affects the delay between slices on autoplay
+      },5000);
 
     });
   }
