@@ -63,7 +63,7 @@
   bottom: 0; }
 
 .chevron-up-right {
-  right: 13.5%;
+  right: 13.55%;
   top: 0; }
 
 .chevron-right-subdued {
@@ -191,3 +191,12 @@
   height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+@media screen and (max-width: 1376px) {
+
+.chevron-up-right {
+  width: 414px;
+}
+
+}

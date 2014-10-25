@@ -22,21 +22,21 @@ angular.module('growthLab', [])
       "class": "chart-left-empty-small"
     },
     {
-      "width": 156,
+      "width": 154,
       "height": 112,
       "front": false,
       "back": "img/chart-left-subdued.png",
       "class": "chart-left-subdued"
     },
     {
-      "width": 378,
+      "width": 377,
       "height": 329,
       "front": "img/financial-management-v2@2x.jpg",
       "back": "img/chart-icon.png",
       "class": "chart-icon"
     },
     {
-      "width": 414,
+      "width": 412,
       "height": 378,
       "front": "img/raising-capital-v2@2x.jpg",
       "back":  "img/chevron-up-right-icon.png",
@@ -92,14 +92,14 @@ angular.module('growthLab', [])
       "class": "binoculars"
     },
     {
-      "width": 413,
+      "width": 411,
       "height": 307,
       "front": "img/business-modeling-v3@2x.jpg",
       "back": "img/document-icon.png",
       "class": "document"
     },
     {
-      "width": 283,
+      "width": 282,
       "height": 161,
       "front": false,
       "back": "img/document-right-bar.png",
@@ -224,4 +224,3 @@ angular.module('growthLab', [])
 
 
 })(jQuery);
-
