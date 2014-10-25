@@ -36,7 +36,7 @@ angular.module('growthLab', [])
       "class": "chart-icon"
     },
     {
-      "width": 412,
+      "width": 411,
       "height": 378,
       "front": "img/raising-capital-v2@2x.jpg",
       "back":  "img/chevron-up-right-icon.png",

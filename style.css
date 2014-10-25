@@ -12,15 +12,9 @@
 
 .home-section-2, .home-section-1 {
   margin-top: -4px; }
-  @media screen and (min-width: 870px) and (max-width: 1180px) {
+  @media screen and (max-width: 1180px) {
     .home-section-2, .home-section-1 {
-      margin-top: -2px; } }
-  @media screen and (min-width: 567px) and (max-width: 869px) {
-    .home-section-2, .home-section-1 {
-      margin-top: -1px; } }
-  @media screen and (max-width: 566px) {
-    .home-section-2, .home-section-1 {
-      margin-top: -1px; } }
+      margin-top: -3px; } }
 
 .parallax-home .site-inner {
   margin-top: 70px; }
@@ -34,18 +28,28 @@
     overflow: hidden;
     border-color: #FFF;
     border-style: solid;
-    border-width: 3px; }
-    @media screen and (min-width: 870px) and (max-width: 1180px) {
+    border-width: 4px; }
+    @media screen and (max-width: 1280px) {
       .slide-container section {
-        border-width: 2px; } }
-    @media screen and (min-width: 567px) and (max-width: 869px) {
-      .slide-container section {
-        border-width: 1px; } }
-    @media screen and (max-width: 566px) {
-      .slide-container section {
-        border-width: 1px; } }
+        border-width: 3px; } }
 
 /* Positioning of each card */
+.chart-left-empty {
+  left: 11.7%;
+  top: 0; }
+
+.chart-left-empty-small {
+  left: 0;
+  top: 10%; }
+
+.chart-left-subdued {
+  left: 4.4%;
+  top: 10%; }
+
+.chart-icon {
+  top: 0;
+  left: 26.85%; }
+
 .welcome-text {
   left: 11.7%;
   bottom: 0; }
@@ -63,8 +67,8 @@
   bottom: 0; }
 
 .chevron-up-right {
-  right: 13.55%;
-  top: 0; }
+  top: 0;
+  right: 13.7%; }
 
 .chevron-right-subdued {
   top: 30%;
@@ -75,37 +79,64 @@
   right: 0; }
 
 .document {
-  right: 13.6%;
-  bottom: 0; }
+  bottom: 0;
+  right: 13.7%; }
 
 .document-right-bar {
-  right: 0;
-  bottom: 0; }
+  bottom: 0;
+  right: 0; }
 
 .binoculars {
   top: 18%;
   right: 33.5%; }
+  @media screen and (max-width: 922px) {
+    .binoculars {
+      right: 33.6%; } }
 
+/* Two small */
+@media screen and (max-width: 922px) {
+  .small-square-top, .small-square-bottom {
+    left: 45%; } }
+
+/* Big two icons right queries */
+@media screen and (min-width: 1180px) {
+  .chevron-up-right, .document {
+    right: 13.56%; } }
+@media screen and (min-width: 1080px) and (max-width: 1180px) {
+  .chevron-up-right, .document {
+    right: 13.62%; } }
+@media screen and (min-width: 940px) and (max-width: 1079px) {
+  .chevron-up-right, .document {
+    right: 13.65%; } }
+@media screen and (min-width: 922px) and (max-width: 939px) {
+  .chevron-up-right, .document {
+    right: 13.6%; } }
+@media screen and (min-width: 847px) and (max-width: 891px) {
+  .chevron-up-right, .document {
+    right: 13.75%; } }
+@media screen and (min-width: 640px) and (max-width: 840px) {
+  .chevron-up-right, .document {
+    right: 13.8%; } }
+
+/* Far right row queries */
+@media screen and (min-width: 1081px) {
+  .chevron-right-empty, .chevron-right-subdued, .document-right-bar {
+    right: 0.1%; } }
+@media screen and (min-width: 924px) and (max-width: 1023px) {
+  .chevron-right-empty, .chevron-right-subdued, .document-right-bar {
+    right: -0.1%; } }
+@media screen and (max-width: 923px) {
+  .chevron-right-empty, .chevron-right-subdued, .document-right-bar {
+    right: 0.2%; } }
+@media screen and (min-width: 640px) and (max-width: 800px) {
+  .chevron-right-empty, .chevron-right-subdued, .document-right-bar {
+    right: 0.35%; } }
+
+/* Teal boxes */
 .chart-left-empty, .chart-left-empty-small, .chevron-right-empty {
   background-color: #00bba8; }
   .chart-left-empty .sliceHolder, .chart-left-empty-small .sliceHolder, .chevron-right-empty .sliceHolder {
     background-color: #00bba8; }
-
-.chart-left-empty {
-  left: 11.7%;
-  top: 0; }
-
-.chart-left-empty-small {
-  left: 0;
-  top: 10%; }
-
-.chart-left-subdued {
-  left: 4.35%;
-  top: 10%; }
-
-.chart-icon {
-  top: 0;
-  left: 26.85%; }
 
 /* Actual code */
 .card {
@@ -191,12 +222,3 @@
   height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
-
-
-@media screen and (max-width: 1376px) {
-
-.chevron-up-right {
-  width: 414px;
-}
-
-}

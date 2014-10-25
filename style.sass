@@ -18,12 +18,8 @@ $darkTeal: #00bba8
 
 .home-section-2, .home-section-1
   margin-top: -4px
-  +screen(870px, 1180px)
-    margin-top: -2px
-  +screen(567px, 869px)
-    margin-top: -1px
-  +max-screen(566px)
-    margin-top: -1px
+  +max-screen(1180px)
+    margin-top: -3px
 
 .parallax-home .site-inner
   margin-top: 70px
@@ -38,15 +34,28 @@ $darkTeal: #00bba8
     overflow: hidden
     border-color: #FFF
     border-style: solid
-    border-width: 3px
-    +screen(870px, 1180px)
-      border-width: 2px
-    +screen(567px, 869px)
-      border-width: 1px
-    +max-screen(566px)
-      border-width: 1px
+    border-width: 4px
+    +max-screen(1280px)
+      border-width: 3px
 
 /* Positioning of each card */
+
+.chart-left-empty
+  left: 11.7%
+  top: 0
+
+.chart-left-empty-small
+  left: 0
+  top: 10%
+
+.chart-left-subdued
+  left: 4.4%
+  top: 10%
+
+.chart-icon
+  top: 0
+  left: 26.85%
+
 .welcome-text
   left: 11.7%
   bottom: 0
@@ -64,52 +73,69 @@ $darkTeal: #00bba8
   bottom: 0
 
 .chevron-up-right
-  right: 13.5%
   top: 0
+  right: 13.7%
 
 .chevron-right-subdued
   top: 30%
   right: 0
-
+  
 .chevron-right-empty
   bottom: 19.5%
   right: 0
-
+  
 .document
-  right: 13.6%
   bottom: 0
+  right: 13.7%
 
 .document-right-bar
-  right: 0
   bottom: 0
+  right: 0
 
 .binoculars
   top: 18%
   right: 33.5%
+  +max-screen(922px)
+    right: 33.6%
 
+/* Two small*/
+.small-square-top, .small-square-bottom
+  +max-screen(922px)
+    left: 45%
 
+/* Big two icons right queries*/
+.chevron-up-right, .document
+  +min-screen(1180px)
+    right: 13.56%
+  +screen(1080px, 1180px)
+    right: 13.62%
+  +screen(940px, 1079px)
+    right: 13.65%
+  +screen(922px, 939px)
+    right: 13.6%
+  +screen(847px, 891px)
+    right: 13.75%
+  +screen(640px, 840px)
+    right: 13.8%
+
+/* Far right row queries */
+.chevron-right-empty, .chevron-right-subdued, .document-right-bar
+  +min-screen(1081px)
+    right: 0.1%
+  +screen(924px, 1023px)
+    right: -0.1%
+  +max-screen(923px)
+    right: 0.2%
+  +screen(640px, 800px)
+    right: 0.35%
+
+/* Teal boxes */
 .chart-left-empty, .chart-left-empty-small, .chevron-right-empty
   background-color: $darkTeal
 
   .sliceHolder
     background-color: $darkTeal
 
-
-.chart-left-empty
-  left: 11.7%
-  top: 0
-
-.chart-left-empty-small
-  left: 0
-  top: 10%
-
-.chart-left-subdued
-  left: 4.35%
-  top: 10%
-
-.chart-icon
-  top: 0
-  left: 26.85%
 
 /* Actual code */
 .card
